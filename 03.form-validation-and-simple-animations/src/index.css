@@ -87,7 +87,7 @@ header {
 
 .rating li:hover,
 .num-display {
-  background: #ff6a95;
+  background: rgba(0, 0, 0, 0.99);
   color: #fff;
 }
 
@@ -112,6 +112,7 @@ input {
   flex-grow: 2;
   border: none;
   font-size: 16px;
+  background-color: transparent;
 }
 
 input:focus {
