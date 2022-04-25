@@ -63,6 +63,7 @@ header {
 .num-display {
   position: relative;
   background: #f4f4f4;
+  color: #000;
   width: 50px;
   height: 50px;
   padding: 10px;
@@ -96,7 +97,7 @@ header {
 }
 
 [type='radio']:checked ~ label {
-  background: #ff6a95;
+  background: rgba(0, 0, 0, 0.99);
   color: #fff;
 }
 
@@ -113,6 +114,7 @@ input {
   border: none;
   font-size: 16px;
   background-color: transparent;
+  color: #fff;
 }
 
 input:focus {
