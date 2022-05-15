@@ -1,24 +1,14 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useContext } from 'react';
 import Spinner from './../layouts/Spinner';
 import UserItem from './../users/UserItem';
+import GithubContext from './../../context/github/GithubContext';
 
 function UserResults() {
-  const [users, setUsers] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const { users, loading, fetchUsers } = useContext(GithubContext);
 
   useEffect(() => {
     fetchUsers();
   }, []);
-
-  const fetchUsers = async () => {
-    const res = await fetch(`${process.env.REACT_APP_GITHUB_API_URL}/users`, {
-      headers: { 'Content-Type': 'application/json' },
-    });
-
-    const data = await res.json();
-    setUsers(data);
-    setLoading(false);
-  };
 
   if (!loading) {
     return (
