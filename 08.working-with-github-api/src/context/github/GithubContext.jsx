@@ -8,12 +8,15 @@ const GITHUB_API_URL = process.env.REACT_APP_GITHUB_API_URL;
 export const GithubProvider = ({ children }) => {
   const initialState = {
     users: [],
-    loggedIn: true,
+    loading: false,
   };
 
   const [state, dispatch] = useReducer(githubReducer, initialState);
 
+  // Get initial users (testing purposes)
   const fetchUsers = async () => {
+    setLoading();
+
     const res = await fetch(`${GITHUB_API_URL}/users`, {
       headers: { 'Content-Type': 'application/json' },
     });
@@ -25,6 +28,8 @@ export const GithubProvider = ({ children }) => {
       payload: data,
     });
   };
+
+  const setLoading = () => dispatch({ type: 'SET_LOADING' });
 
   return (
     <GithubContext.Provider value={{ users: state.users, loading: state.loading, fetchUsers }}>
