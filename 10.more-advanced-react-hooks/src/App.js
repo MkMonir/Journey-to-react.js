@@ -1,9 +1,10 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import UseRefExample1 from './components/UseRefExample1';
 
 function App() {
   return (
     <div className="container mt-5">
-      <h1>Hello</h1>
+      <UseRefExample1 />
     </div>
   );
 }
