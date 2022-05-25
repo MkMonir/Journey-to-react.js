@@ -1,10 +1,10 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import UseMemoExample from './components/UseMemoExample';
+import UseCallbackExample from './components/UseCallbackExample';
 
 function App() {
   return (
     <div className="container mt-5">
-      <UseMemoExample />
+      <UseCallbackExample />
     </div>
   );
 }
