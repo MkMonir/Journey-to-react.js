@@ -31,6 +31,13 @@ const SignUp = () => {
       const user = userCredential.user;
 
       updateProfile(auth.currentUser, { displayName: name });
+
+      const formDataCopy = { ...formData };
+      delete formDataCopy.password;
+      formDataCopy.timestamp = serverTimestamp();
+
+      await setDoc(doc(db, 'users', user.uid), formDataCopy);
+
       navigate('/');
     } catch (err) {
       console.log(err);
