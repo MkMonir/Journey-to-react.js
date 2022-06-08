@@ -6,9 +6,19 @@
 }
 
 html::-webkit-scrollbar {
-  display: none;
+  width: 8px;
+  height: 8px;
+  padding: 5px;
 }
 
+html::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+html::-webkit-scrollbar-thumb {
+  background-color: #00cc66;
+  border-radius: 20px;
+}
 body {
   font-family: 'Montserrat', sans-serif;
   background-color: #f2f4f8;
@@ -92,6 +102,7 @@ button {
 .category,
 .explore {
   margin: 1rem;
+  min-height: 100vh;
 }
 @media (min-width: 1024px) {
   .pageContainer,
@@ -221,7 +232,7 @@ button {
 
 .signInBar,
 .signUpBar {
-  margin-top: 3rem;
+  margin-top: 1rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -265,7 +276,7 @@ button {
 }
 
 .socialLogin {
-  margin-top: 4rem;
+  margin-top: 1rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -290,7 +301,7 @@ button {
 }
 
 .registerLink {
-  margin-top: 4rem;
+  margin-top: 2rem;
   color: #00cc66;
   font-weight: 600;
   text-align: center;
