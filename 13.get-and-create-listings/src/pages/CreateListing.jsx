@@ -64,7 +64,40 @@ const CreateListing = () => {
   const onSubmit = (e) => {
     e.preventDefault();
 
-    console.log(formData);
+    setLoading(true);
+
+    if (discountedPrice >= regularPrice) {
+      setLoading(false);
+      toast.error('Discounted price need to be less than regular price');
+      return;
+    }
+
+    if (images.length > 6) {
+      setLoading(false);
+      toast.error('Max images 6');
+      return;
+    }
+
+    let geolocation = {};
+    let location;
+
+    if (geolocationEnabled) {
+      geolocation.lat = data.geoLat;
+      geolocation.lng = data.geoLng;
+      location = data.geoLoc;
+
+      if (location === undefined || location.includes('undefined')) {
+        setLoading(false);
+        toast.error('Please enter a correct address');
+        return;
+      }
+    } else {
+      geolocation.lat = latitude;
+      geolocation.lng = longitude;
+      location = address;
+    }
+
+    setLoading(false);
   };
 
   const onMutate = (e) => {
