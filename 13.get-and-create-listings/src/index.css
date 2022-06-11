@@ -33,6 +33,11 @@ a {
 button {
   outline: none;
   border: none;
+  cursor: pointer;
+}
+
+input[type='file'] {
+  cursor: pointer;
 }
 
 .input,
@@ -396,7 +401,7 @@ button {
   width: 100%;
   border-radius: 1.5rem;
   object-fit: cover;
-  margin: 0 auto;
+  margin: 10px auto;
 }
 
 .exploreCategoryName {
@@ -472,6 +477,7 @@ button {
 .categoryListingInfoDiv {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   max-width: 275px;
 }
 
@@ -646,7 +652,7 @@ button {
   display: flex;
   justify-content: space-between;
   max-width: 500px;
-  margin-top: 20px;
+  margin: 20px 0 5px 0;
 }
 
 .personalDetailsText {
@@ -704,7 +710,7 @@ button {
 .createListing {
   background-color: #ffffff;
   border-radius: 1rem;
-  padding: 0.25rem 1rem;
+  padding: 1rem;
   box-shadow: rgba(0, 0, 0, 0.2);
   margin-top: 2rem;
   font-weight: 600;
@@ -750,6 +756,7 @@ button {
   justify-content: center;
   align-items: center;
 }
+
 .formButtonActive {
   background-color: #00cc66;
   color: #ffffff;

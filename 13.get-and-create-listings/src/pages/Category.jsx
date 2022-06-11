@@ -4,7 +4,6 @@ import { collection, getDocs, query, where, orderBy, limit, startAfter } from 'f
 import { db } from '../firebase.config';
 import { toast } from 'react-toastify';
 import Spinner from '../components/Spinner';
-import { async } from '@firebase/util';
 import ListingItem from '../components/ListingItem';
 
 const Category = () => {
