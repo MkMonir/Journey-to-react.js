@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useNavigate, useParams, Link } from 'react-router-dom';
 import { doc, getDoc } from 'firebase/firestore';
+import { MapContainer, Marker, Popup, TileLayer } from 'react-leaflet';
 import { getAuth } from 'firebase/auth';
 import { db } from '../firebase.config';
 import Spinner from '../components/Spinner';
@@ -76,11 +77,27 @@ const Listing = () => {
         </ul>
 
         <p className="listingLocationTitle">Location</p>
-        {/* MAP */}
 
-        {auth.currentUser !== listing.userRef && (
+        <div className="leafletContainer">
+          <MapContainer
+            style={{ width: '100%', height: '100%' }}
+            center={[listing.geoLocation.lat, listing.geoLocation.lng]}
+            zoom={13}
+            scrollWheelZoom={false}
+          >
+            <TileLayer
+              attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+              url="https://{s}.tile.openstreetmap.de/tiles/osmde/{z}/{x}/{y}.png"
+            />
+            <Marker position={[listing.geoLocation.lat, listing.geoLocation.lng]}>
+              <Popup>{listing.location}</Popup>
+            </Marker>
+          </MapContainer>
+        </div>
+
+        {auth.currentUser?.uid !== listing.userRef && (
           <Link
-            to={`/contact/${listing.userRef}?${listing.name}&${listing.location}`}
+            to={`/contact/${listing.userRef}?listingName=${listing.name}`}
             className="primaryButton"
           >
             Contact Lanlord
