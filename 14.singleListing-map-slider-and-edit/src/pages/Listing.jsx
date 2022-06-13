@@ -2,10 +2,17 @@ import { useState, useEffect } from 'react';
 import { useNavigate, useParams, Link } from 'react-router-dom';
 import { doc, getDoc } from 'firebase/firestore';
 import { MapContainer, Marker, Popup, TileLayer } from 'react-leaflet';
+import SwiperCore, { Navigation, Pagination, Scrollbar, A11y } from 'swiper';
+import { Swiper, SwiperSlide } from 'swiper/react';
+// import 'swiper/swiper-bundle.min.css';
+import 'swiper/css';
+import 'swiper/css/pagination';
+
 import { getAuth } from 'firebase/auth';
 import { db } from '../firebase.config';
 import Spinner from '../components/Spinner';
 import shareIcon from '../assets/svg/shareIcon.svg';
+// SwiperCore.use([Navigation, Pagination, Scrollbar, A11y]);
 
 const Listing = () => {
   const [listing, setListing] = useState(null);
@@ -34,7 +41,21 @@ const Listing = () => {
 
   return (
     <main>
-      {/* SLIDER */}
+      <Swiper
+        pagination={{
+          clickable: true,
+        }}
+        modules={[Pagination]}
+        className="mySwiper2"
+      >
+        {listing.imgUrls.map((url, i) => (
+          <SwiperSlide key={i}>
+            <div className="imgDiv">
+              <img src={url} alt="" className="slideImg" />
+            </div>
+          </SwiperSlide>
+        ))}
+      </Swiper>
 
       <div
         className="shareIconDiv"
@@ -48,9 +69,7 @@ const Listing = () => {
       >
         <img src={shareIcon} alt="share" />
       </div>
-
       {shareLinkCopied && <p className="linkCopied">Link Copied</p>}
-
       <div className="listingDetails">
         <p className="listingName">
           {listing.name} - $
