@@ -24,7 +24,7 @@ const Category = () => {
           listingsRef,
           where('type', '==', params.categoryName),
           orderBy('timestamp', 'desc'),
-          limit(2)
+          limit(10)
         );
 
         // Execute Query
@@ -62,7 +62,7 @@ const Category = () => {
         where('type', '==', params.categoryName),
         orderBy('timestamp', 'desc'),
         startAfter(lastFetchedListings),
-        limit(2)
+        limit(10)
       );
 
       // Execute Query
@@ -108,7 +108,7 @@ const Category = () => {
           </main>
           <br />
           <br />
-          {lastFetchedListings(
+          {lastFetchedListings && (
             <p className="loadMore" onClick={onFetchMoreListings}>
               Load More
             </p>

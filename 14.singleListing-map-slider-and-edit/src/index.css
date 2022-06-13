@@ -730,7 +730,7 @@ input[type='file'] {
 }
 
 .listingText {
-  margin-top: 3rem;
+  margin: 3rem 0 1rem 0;
   font-weight: 600;
 }
 
@@ -863,6 +863,7 @@ input[type='file'] {
   align-items: center;
   background-size: cover;
   background-position: center;
+  height: 100%;
 }
 
 .imgDiv {
@@ -871,6 +872,12 @@ input[type='file'] {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+@media (max-width: 768px) {
+  .imgDiv {
+    height: 100%;
+  }
 }
 
 .slideImg {

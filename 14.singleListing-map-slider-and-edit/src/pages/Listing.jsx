@@ -74,7 +74,7 @@ const Listing = () => {
         <p className="listingName">
           {listing.name} - $
           {listing.offer
-            ? listing.disCountedPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')
+            ? listing.discountedPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')
             : listing.regularPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
         </p>
 
@@ -84,7 +84,7 @@ const Listing = () => {
 
         {listing.offer && (
           <p className="discountPrice">
-            ${listing.regularPrice - listing.disCountedPrice} discount
+            ${listing.regularPrice - listing.discountedPrice} discount
           </p>
         )}
 

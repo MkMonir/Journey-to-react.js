@@ -57,7 +57,6 @@ const Profile = () => {
     };
     fetchUserListings();
   }, [auth.currentUser.uid]);
-  console.log(auth.currentUser.uid);
 
   const onLogout = (e) => {
     e.preventDefault();
@@ -94,6 +93,10 @@ const Profile = () => {
       setListings(updatedListings);
       toast.success('Successfully deleted listing');
     }
+  };
+
+  const onEdit = (listingId) => {
+    navigate(`/edit-listing/${listingId}`);
   };
 
   return (
@@ -142,7 +145,7 @@ const Profile = () => {
 
         <Link to="/create-listing" className="createListing">
           <img src={homeIcon} alt="home" />
-          <p>Sell or rent your home</p>
+          <p>Sale or Rent your home</p>
           <img src={arrowRightIcon} alt="arrowright" />
         </Link>
 
@@ -156,6 +159,7 @@ const Profile = () => {
                   listing={listing.data}
                   id={listing.id}
                   onDelete={() => onDelete(listing.id)}
+                  onEdit={() => onEdit(listing.id)}
                 />
               ))}
             </ul>
